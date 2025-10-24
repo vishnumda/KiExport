@@ -2,6 +2,160 @@
 # Changes
 
 #
+### **+05:30 12:09:17 AM 25-10-2025, Saturday**
+
+  - Added dependency checks.
+    - `check_dependencies()` will now check if all of the required Python modules are installed.
+    - The app will proceed only if all of the required modules are found.
+  - New Version 🆕 `0.1.15`.
+
+#
+### **+05:30 11:39:59 PM 24-10-2025, Friday**
+
+  - Reverted the `MIN_CONFIG_JSON_VERSION` value back to `1.7`.
+    - I tested the current version with `1.7` and found no issues.
+  - Updated `generatePcbReners()`.
+    - `kie_generate_svg` is no longer loaded with a default value.
+    - Such control flags must only be read from the configuration file.
+    - Added exception handling for missing `kie_generate_svg` key.
+    - When the key is missing the SVG generation operation is skipped.
+    - `vtracer_path` is also now handled the same way.
+    - We can not expect where the users are going to install these apps. So there is no point in loading a default path.
+  - New Version 🆕 `0.1.14`.
+
+#
+### **+05:30 09:21:12 PM 24-10-2025, Friday**
+
+  - Added support for exporting rendered SVG images.
+    - Updated the `kiexport.json` specification.
+      - Updated the JSON version to `1.8`.
+      - Added `vtracer_path`.
+        - This tells where the VTracer SVG converter is located.
+        - This can be a full path or jus the executable name if it is in the System Path.
+      - Added `kie_generate_svg`.
+        - This tells if an SVG should be generated from the rendered PNG images.
+        - Can be `true` or `false`.
+      - Added `kie_vtracer_params`.
+        - This is a dictionary that holds all of the VTracer parameters.
+    - Updated `MIN_CONFIG_JSON_VERSION` to `1.8`.
+    - Updated `DEFAULT_CONFIG_JSON`.
+    - Updated `LazyDict` callback.
+      - The call will now return `None` when the key/value is not found.
+      - We can then do a None check to find any missing keys/values.
+    - Added `cropImage()`
+      - Rendered images are cropped to remove empty spaces before converting to SVG.
+  - Added `pillow` to `requirements.txt`.
+  - New Version 🆕 `0.1.13`.
+
+#
+### **+05:30 09:58:25 PM 20-10-2025, Monday**
+
+  - Added new options for the `bom` export command.
+    - Added `--include-excluded-from-bom`.
+  - Added new options for the `sch_pdf` command.
+    - Added `--default-font`.
+    - Added `--exclude-pdf-hierarchical-links`.
+    - Added `--exclude-pdf-metadata`.
+  - Added new options for the `pcb_pdf` command.
+    - Added `--subtract-soldermask`.
+    - Added `--sketch-pads-on-fab-layers`.
+    - Added `--hide-DNP-footprints-on-fab-layers`.
+    - Added `--sketch-DNP-footprints-on-fab-layers`.
+    - Added `--crossout-DNP-footprints-on-fab-layers`.
+    - Added `--plot-invisible-text`.
+  - Added new options for the `svg` command.
+    - Added `--sketch-pads-on-fab-layers`.
+    - Added `--hide-DNP-footprints-on-fab-layers`.
+    - Added `--sketch-DNP-footprints-on-fab-layers`.
+    - Added `--crossout-DNP-footprints-on-fab-layers`.
+    - Added `--fit-page-to-board`.
+    - Added `--plot-invisible-text`.
+  - In `generatePositions()`, the files are named with "Position" instead of "Pos".
+  - There will be a few breaking changes added to the upcoming versions as we need to add some functionalities that are now natively supported by KiCad CLI.
+    - These changes will replace existing KiExport configuration parameters.
+    - New version of KiExport will not support the older parameters.
+    - The idea is to add support for as many new non-breaking command options as possible before the breaking changes are introduced.
+  - New Version 🆕 `0.1.12`.
+
+#
+### **+05:30 09:32:48 PM 20-10-2025, Monday**
+
+  - Added new options for the `gerbers` command.
+    - Added `--sketch-pads-on-fab-layers`.
+    - Added `--hide-DNP-footprints-on-fab-layers`.
+    - Added `--sketch-DNP-footprints-on-fab-layers`.
+    - Added `--crossout-DNP-footprints-on-fab-layers`.
+    - Added `--plot-invisible-text`.
+  - New Version 🆕 `0.1.11`.
+
+#
+### **+05:30 09:54:40 PM 05-10-2025, Sunday**
+
+  - TODO:
+    - Add support for `source_zip` command.
+      - This will zip the project source files while generating the manufacturing files.
+    - Add support for JSON configuration for the XLS BoM export.
+    - Add `sch_erc` command support.
+
+#
+### **+05:30 08:18:37 PM 05-10-2025, Sunday**
+
+  - `generateGerbers()` will now rename the file names in the generated Gerber job file.
+    - Originally contributed by `Leor Weinstein`.
+
+#
+### **+05:30 05:58:46 PM 05-10-2025, Sunday**
+
+  - `merge_pdfs()` can now accept a list of specific PDF files to merge.
+    - If the list is not provided, all PDF files with `.pdf` extension in the folder will be merged.
+    - This allows merging specific files when needed.
+  - Fixed log message error in `generateBomXls()` function.
+  - New Version 🆕 `0.1.9`.
+
+#
+### **+05:30 04:51:05 PM 16-06-2025, Monday**
+
+  - Updated Readme.
+    - Added `pcb_drc` command documentation.
+
+#
+### **+05:30 04:26:44 PM 16-06-2025, Monday**
+
+  - Updated `runDRC()`.
+    - Updated the default value of the `type` to `default`.
+    - When `default` type is used, the format from the configuration file will be used.
+    - If the configuration file is missing the correct format value, then the "report" format will be used.
+    - Specifying the file format in CLI command will override the configuration file value.
+    - If no type is specified in the CLI command, then the format specified in the configuration file will be used.
+  - New Version 🆕 `0.1.8`.
+
+#
+### **+05:30 03:16:03 PM 16-06-2025, Monday**
+
+  - Updated `runDRC()`.
+    - It now checks how many voilations were found in the DRC report and print them.
+    - If violations are found, the user will be prompted to continue or exit the app.
+    - The export log won't be saved if the user chooses to exit. The report will still be saved.
+    - `pcb_drc` command execcution will be set to false if the user chooses to continue with DRC errors.
+  - New Version 🆕 `0.1.7`.
+
+#
+### **+05:30 02:14:07 PM 16-06-2025, Monday**
+
+  - Added new command `pcb_drc`.
+    - This will run the DRC on the PCB file and write a report file.
+    - Added new `pcb_drc` configuration under the `data` section in `kiexport.json`.
+    - Updated `valid_commands_json`.
+    - Updated `valid_commands`.
+    - Added the new command in `run()`.
+    - Added new function `runDRC()`.
+    - Added `pcb_drc_parser` in `parseArguments()`.
+  - Updated the `DEFAULT_CONFIG_JSON` with latest command arguments.
+    - Mainly for STEP and VRML export.
+  - Bumped up the `kiexport.json` version to `1.7`.
+  - New Version 🆕 `0.1.6`.
+
+#
 ### **+05:30 10:09:02 AM 29-05-2025, Thursday**
 
   - Fixed `generateBomXls()` function call issue in `parseArguments()`.

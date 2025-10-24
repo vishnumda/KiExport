@@ -4,8 +4,8 @@
 # KiExport
 # Tool to export manufacturing files from KiCad PCB projects.
 # Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
-# Version: 0.1.5
-# Last Modified: +05:30 10:09:48 AM 29-05-2025, Thursday
+# Version: 0.1.15
+# Last Modified: +05:30 00:11:18 AM 25-10-2025, Saturday
 # GitHub: https://github.com/vishnumaiea/KiExport
 # License: MIT
 
@@ -19,27 +19,75 @@ import re
 from datetime import datetime
 import zipfile
 import json
-import pymupdf
 import ast
 import sys
-import semver
 import csv
-from openpyxl import Workbook
-from openpyxl.styles import Font, Alignment
-from openpyxl.utils import get_column_letter
-from openpyxl.worksheet.dimensions import ColumnDimension
-from openpyxl.styles import PatternFill
 
 #=============================================================================================#
 
 APP_NAME = "KiExport"
-APP_VERSION = "0.1.5"
+APP_VERSION = "0.1.15"
 APP_DESCRIPTION = "Tool to export manufacturing files from KiCad PCB projects."
 APP_AUTHOR = "Vishnu Mohanan (@vishnumaiea, @vizmohanan)"
 
 SAMPLE_PCB_FILE = "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb"
-MIN_CONFIG_JSON_VERSION = "1.6"  # Minimum required version of the config JSON file
-MIN_KICAD_VERSION = "8.0"  # Minimum required version of the config JSON file
+MIN_CONFIG_JSON_VERSION = "1.7"  # Minimum required version of the config JSON file
+MIN_KICAD_VERSION = "8.0"  # Minimum required version of KiCad
+
+#=============================================================================================#
+
+def check_dependencies() -> bool:
+  """Check if all required Python modules are available."""
+  required_modules = {
+    'semver': 'Version comparison',
+    'pymupdf': 'PDF manipulation', 
+    'openpyxl': 'Excel file generation',
+    'PIL': 'Image processing'
+  }
+
+  missing = []
+  for module, purpose in required_modules.items():
+    try:
+      __import__(module)
+    except ImportError:
+      if module == 'PIL':
+        try:
+          __import__('Pillow')
+        except ImportError:
+          missing.append (f"{module} (Purpose: {purpose})")
+      else:
+        missing.append (f"{module} (Purpose: {purpose})")
+
+  if missing:
+    print (f"\n{APP_NAME} - {APP_VERSION} requires the following Python modules:")
+    print ("\nMissing required Python modules:")
+    for module in missing:
+      print (f"  - {module}")
+    print ("\nPlease install the missing modules using pip:")
+    for module in missing:
+      module_name = module.split (" ")[0]
+      if module_name == 'PIL':
+        module_name = 'Pillow'
+      print (f"  pip install {module_name}")
+    return False
+  return True
+
+#---------------------------------------------------------------------------------------------#
+
+if check_dependencies():
+  # Only import these if dependencies are met
+  import semver
+  import pymupdf
+  from openpyxl import Workbook
+  from openpyxl.styles import Font, Alignment, PatternFill
+  from openpyxl.utils import get_column_letter
+  from openpyxl.worksheet.dimensions import ColumnDimension
+  from PIL import Image
+else:
+  print ("\nCannot continue without required dependencies.")
+  sys.exit (1)
+
+#=============================================================================================#
 
 current_config = None
 default_config = None
@@ -1586,7 +1634,178 @@ def generatePcbRenders (output_dir, pcb_filename, preset = None, to_overwrite = 
 
     print (color.green (f"generatePcbRenders [OK]: Render files using preset '{preset}' exported successfully."))
     print()
+
+    #---------------------------------------------------------------------------------------------#
+
+    # Now check for the `kie_generate_svg` flag for generating the SVG from the PNG.
+    kie_generate_svg = None
+    try:
+      # No need of getting the default value here.
+      kie_generate_svg = current_config.get ("data", {}).get ("pcb_render", {}).get (preset, {}).get ("kie_generate_svg")
+    except Exception as e:
+      kie_generate_svg = None
+
+    if (kie_generate_svg == None) or (kie_generate_svg == "") or (kie_generate_svg == False): # Return if we do not need to generate an SVG.
+      command_exec_status ["pcb_render"] = True
+      return
+    
+    if kie_generate_svg == True:
+      print (f"generatePcbRenders [INFO]: Converting rendered PNG of '{color.magenta (preset)}' to SVG..")
+
+    #---------------------------------------------------------------------------------------------#
+
+    # Crop the original PNG image to remove empty transparent space around the PCB.
+    try:
+      print (f"generatePcbRenders [INFO]: Cropping the image to remove empty transparent space..")
+      cropped_filename = cropImage (file_name, margins = (100, 100, 100, 100))
+      print (color.green (f"generatePcbRenders [OK]: Image cropped successfully."))
+      file_name = cropped_filename  # Update the file name to the cropped file
+    except Exception as e:
+      print (color.red (f"generatePcbRenders [ERROR]: Error occurred while cropping the image: {e}"))
+      command_exec_status ["pcb_render"] = False
+      return
+
+    #---------------------------------------------------------------------------------------------#
+
+    # If we need to generate an SVG, then read the VTracer parameters from `preset -> kie_vtracer_params`.
+    # This retrieves a dictionary of parameters for VTracer.
+    kie_vtracer_params = current_config.get ("data", {}).get ("pcb_render", {}).get (preset, {}).get ("kie_vtracer_params", lambda: default_config ["data"]["pcb_render"][preset]["kie_vtracer_params"])
+    
+    vtracer_path = None
+    try: vtracer_path = current_config.get ("vtracer_path")
+    except Exception as e: vtracer_path = None
+    
+    if (vtracer_path == None) or (vtracer_path == ""):
+      print (color.red (f"generatePcbRenders [ERROR]: VTracer path not found in config file."))
+      print()
+      command_exec_status ["pcb_render"] = False
+      return
+    
+    # Check if the VTracer path exists
+    if not check_file_exists (vtracer_path):
+      print (color.red (f"generatePcbRenders [ERROR]: VTracer path '{vtracer_path}' does not exist. Cannot generate SVG."))
+      print()
+      command_exec_status ["pcb_render"] = False
+      return
+
+    vtracer_command = [f'"{vtracer_path}"']  # Base VTracer command
+    full_command = vtracer_command [:]  # Copy the base command
+
+    # Add the VTracer parameters
+    if kie_vtracer_params:
+      for key, value in kie_vtracer_params.items():
+        if key.startswith ("--"): # Only fetch the arguments that start with "--"
+          if value == "": # Skip if the value is empty
+            continue
+          else:
+            # Check if the vlaue is a JSON boolean
+            if isinstance (value, bool):
+              if value == True: # If the value is true, then append the key as an argument
+                full_command.append (key)
+            else:
+              # Check if the value is a string and not a numeral
+              if isinstance (value, str) and not value.isdigit():
+                  full_command.append (key)
+                  full_command.append (f'"{value}"') # Add as a double-quoted string
+              elif isinstance (value, (int, float)):
+                  full_command.append (key)
+                  full_command.append (str (value))  # Append the numeric value as string
+    else:
+      print (color.red (f"generatePcbRenders [ERROR]: No VTracer parameters found for preset '{preset}'. Cannot generate SVG."))
+      print()
+      command_exec_status ["pcb_render"] = False
+      return
+
+    # Finally add the input and output files
+    png_filename = file_name  # The PNG file generated earlier
+    svg_filename = png_filename.rsplit ('.', 1)[0] + ".svg"  # Change the file extension to .svg
+    full_command.append (f'--input "{png_filename}"')
+    full_command.append (f'--output "{svg_filename}"')
+    print ("generatePcbRenders [INFO]: Running VTracer command: ", color.blue (' '.join (full_command)))
+
+    # Run the VTracer command
+    try:
+      full_command = ' '.join (full_command) # Convert the list to a string
+      subprocess.run (full_command, check = True)
+      print()
+
+    except subprocess.CalledProcessError as e:
+      print (color.red (f"generatePcbRenders [ERROR]: Error occurred while generating SVG: {e}"))
+      print()
+      command_exec_status ["pcb_render"] = False
+      return
+
+    print (color.green (f"generatePcbRenders [OK]: Render '{preset}' exported to SVG successfully."))
+    print (f"generatePcbRenders [INFO]: SVG file: {color.magenta (svg_filename)}")
+    print()
     command_exec_status ["pcb_render"] = True
+    return
+
+#=============================================================================================#
+
+def cropImage (
+    filename: str,
+    margins: tuple [int, int, int, int] = (0, 0, 0, 0),
+    output: str | None = None
+  ) -> str:
+  """
+  Crop empty transparent space around a high-resolution PNG image
+  and save the result as a new image.
+
+  Args:
+    filename (str): Path to the source PNG image.
+    margins (tuple[int, int, int, int]): Extra margins (top, right, bottom, left)
+    in pixels to retain after cropping. Default is (0, 0, 0, 0).
+    output (str, optional): Output file path. If None, '_cropped' is appended
+    to the original filename.
+
+  Returns:
+    str: The output file path of the cropped image.
+  """
+  
+  # Check if the image file exists
+  if not os.path.isfile (filename):
+    raise FileNotFoundError (f"File not found: {filename}")
+  else:
+    print (f"File found: {filename}")
+
+  # Temporarily increase PIL's size limit
+  Image.MAX_IMAGE_PIXELS = None  # Disable limit temporarily
+  
+  try:
+    # Open image
+    with Image.open (filename) as img:
+      if img.mode != "RGBA":
+        img = img.convert ("RGBA")
+
+      # Get bounding box of non-transparent pixels
+      bbox = img.getbbox()
+      if bbox is None:
+        raise ValueError (f"No visible pixels found in image: {filename}")
+
+      left, top, right, bottom = bbox
+      m_top, m_right, m_bottom, m_left = margins
+
+      # Apply margins safely within image bounds
+      left = max (0, left - m_left)
+      top = max (0, top - m_top)
+      right = min (img.width, right + m_right)
+      bottom = min (img.height, bottom + m_bottom)
+
+      cropped = img.crop ((left, top, right, bottom))
+
+      # Prepare output path
+      if output is None:
+        base, ext = filename.rsplit ('.', 1)
+        output = f"{base}-Cropped.{ext}"
+
+      cropped.save (output)
+  
+  finally:
+    # Restore the default limit
+    Image.MAX_IMAGE_PIXELS = 178956970  # Reset to default value
+  
+  return output
 
 #=============================================================================================#
 
