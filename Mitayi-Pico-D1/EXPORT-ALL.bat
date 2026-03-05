@@ -2,8 +2,8 @@
 
 :: Set variables
 set OUTPUT_DIR=Export
-set SCH_FILE=Mitayi-Pico-RP2040.kicad_sch
-set PCB_FILE=Mitayi-Pico-RP2040.kicad_pcb
+set SCH_FILE=Mitayi-Pico-D1.kicad_sch
+set PCB_FILE=Mitayi-Pico-D1.kicad_pcb
 
 :: Execute commands
 @REM kiexport sch_pdf -od "%OUTPUT_DIR%" -if "%SCH_FILE%"
