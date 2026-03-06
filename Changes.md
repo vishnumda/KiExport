@@ -2,6 +2,13 @@
 # Changes
 
 #
+### **+05:30 11:33:59 AM 06-03-2026, Friday**
+
+  - Moved the value for `DEFAULT_CONFIG_JSON` to a separate file called `default.json`.
+    - This file is loaded when the dependencies are checked.
+  - New Version 🆕 `0.2.17`.
+
+#
 ### **+05:30 10:54:07 AM 06-03-2026, Friday**
 
   - Updated `generateSvg()`.
