@@ -2,7 +2,7 @@
   "name": "KiExport.JSON",
   "description": "Configuration file for KiExport",
   "filetype": "json",
-  "version": "1.9",
+  "version": "1.10",
   "project_name": "Mitayi-Pico-D1",
   "commands": [
     "pcb_drc",

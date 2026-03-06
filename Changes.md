@@ -2,6 +2,13 @@
 # Changes
 
 #
+### **+05:30 03:05:17 PM 06-03-2026, Friday**
+
+  - Updated Readme.
+  - Corrected the version string.
+  - Exported new executable for version `0.2.18`.
+
+#
 ### **+05:30 12:33:56 PM 06-03-2026, Friday**
 
   - Added 3D-PDF export support for the `ddd` command.
