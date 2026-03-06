@@ -4,8 +4,8 @@
 # KiExport
 # Tool to export manufacturing files from KiCad PCB projects.
 # Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
-# Version: 0.2.17
-# Last Modified: +05:30 11:29:53 AM 06-03-2026, Friday
+# Version: 0.2.18
+# Last Modified: +05:30 12:33:46 PM 06-03-2026, Friday
 # GitHub: https://github.com/vishnumaiea/KiExport
 # License: MIT
 
@@ -26,7 +26,7 @@ import csv
 #=============================================================================================#
 
 APP_NAME = "KiExport"
-APP_VERSION = "0.1.17"
+APP_VERSION = "0.1.18"
 APP_DESCRIPTION = "Tool to export manufacturing files from KiCad PCB projects."
 APP_AUTHOR = "Vishnu Mohanan (@vishnumaiea)"
 
@@ -1475,6 +1475,7 @@ def generate3D (output_dir, pcb_filename, type = "STEP", to_overwrite = True):
   kicad_cli_path = f'{current_config.get ("kicad_cli_path", lambda: default_config ["kicad_cli_path"])}'
 
   # Common base command
+  # ddd_export_command = None
   if type == "STEP" or type == "step":
     ddd_export_command = [f'"{kicad_cli_path}"', "pcb", "export", "step"]
     type = "STEP"
@@ -1483,6 +1484,14 @@ def generate3D (output_dir, pcb_filename, type = "STEP", to_overwrite = True):
     ddd_export_command = [f'"{kicad_cli_path}"', "pcb", "export", "vrml"]
     type = "VRML"
     extension = "wrl"
+  elif type == "3DPDF" or type == "3dpdf":
+    ddd_export_command = [f'"{kicad_cli_path}"', "pcb", "export", "3dpdf"]
+    type = "3DPDF"
+    extension = "pdf"
+  else:
+    print (color.red (f"generate3D [ERROR]: Invalid 3D export type '{type}'. Supported types are STEP, VRML and 3DPDF."))
+    command_exec_status ["ddd" + "_" + type] = False
+    return
 
   if not check_file_exists (pcb_filename):
     print (color.red (f"generate3D [ERROR]: '{pcb_filename}' does not exist."))
@@ -2313,7 +2322,7 @@ def validate_command_list (cli_string):
     "pcb_pdf": [],
     "positions": [],
     "svg": [],
-    "ddd": ["STEP", "VRML"],
+    "ddd": ["STEP", "VRML", "3DPDF"],
     "pcb_render": []
   })
 
@@ -2352,7 +2361,7 @@ def validate_command_list (cli_string):
     # Standalone commands. 
     if isinstance (item, str):
       if item not in valid_commands_dict: # Check if the command is a valid top-level command
-        print (color.red (f"validate_command_list [ERROR]: Invalid standalone command '{item}'"))
+        print (color.red (f"validate_command_list [ERROR]: Invalid standalone command '{item}'."))
         return False
       
       validated_list.append (item)
@@ -2365,12 +2374,12 @@ def validate_command_list (cli_string):
         return False
       
       if (main not in preset_commands_json) and (sub not in valid_commands_dict [main]):
-        print (color.red (f"validate_command_list [ERROR]: Invalid subcommand '{sub}' for main command '{main}'"))
+        print (color.red (f"validate_command_list [ERROR]: Invalid subcommand '{sub}' for main command '{main}'."))
         return False
       
       validated_list.append ([main, sub])
     else:
-      print (color.red (f"validate_command_list [ERROR]: Unrecognized command format '{item}'"))
+      print (color.red (f"validate_command_list [ERROR]: Unrecognized command format '{item}'."))
     
   return validated_list
 
@@ -2504,8 +2513,9 @@ def run (config_file, command_list = None):
     cli_cmd_list = validate_command_list (cli_string = command_list)
 
     if cli_cmd_list is False:
-      print (color.red ("run [ERROR]: Invalid command list provided."))
-      return
+      print (color.red ("run [ERROR]: Invalid command list provided. Check your command or export configuration file for unsupported commands."))
+      exit (1)
+      # return
 
     cli_cmd_strings = []
     cli_cmd_lists = []
@@ -2675,6 +2685,11 @@ def run (config_file, command_list = None):
         output_dir = current_config.get ("data", {}).get ("ddd", {}).get ("VRML", {}).get ("--output_dir", lambda: default_config ["data"]["ddd"]["VRML"]["--output_dir"])
         output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
         generate3D (output_dir = output_dir, pcb_filename = pcb_file_path, type = "VRML")
+      
+      elif cmd [1] == "3DPDF":
+        output_dir = current_config.get ("data", {}).get ("ddd", {}).get ("3DPDF", {}).get ("--output_dir", lambda: default_config ["data"]["ddd"]["3DPDF"]["--output_dir"])
+        output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
+        generate3D (output_dir = output_dir, pcb_filename = pcb_file_path, type = "3DPDF")
         
       else: # Default is STEP
         output_dir = current_config.get ("data", {}).get ("ddd", {}).get ("STEP", {}).get ("--output_dir", lambda: default_config ["data"]["ddd"]["STEP"]["--output_dir"])
@@ -2762,7 +2777,7 @@ def parseArguments():
   ddd_parser = subparsers.add_parser ("ddd", help = "Export 3D files.")
   ddd_parser.add_argument ("-if", "--input_filename", required = True, help = "Path to the .kicad_pcb file.")
   ddd_parser.add_argument ("-od", "--output_dir", required = True, help = "Directory to save the 3D files to.")
-  ddd_parser.add_argument ("-t", "--type", required = True, help = "The type of file to generate. Can be STEP or VRML.")
+  ddd_parser.add_argument ("-t", "--type", required = True, help = "The type of file to generate. Can be STEP/VRML/3DPDF.")
 
   # Subparser for the BoM file export command.
   # Example: python .\kiexport.py bom -od "Mitayi-Pico-D1/Export" -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_sch" -t "CSV"

@@ -2,6 +2,19 @@
 # Changes
 
 #
+### **+05:30 12:33:56 PM 06-03-2026, Friday**
+
+  - Added 3D-PDF export support for the `ddd` command.
+    - Updated `generate3D()`.
+      - It now supports the new format `3DPDF`.
+    - Updated `valid_commands_json` to include `3DPDF`.
+  - Updated `run()`.
+    - `run()` will now exit when an invalid command list is provided.
+    - Added support for `3DPDF`.
+  - New "3DPDF" section under the "ddd" command in the configuration files.
+  - New Version 🆕 `0.2.18`.
+
+#
 ### **+05:30 11:33:59 AM 06-03-2026, Friday**
 
   - Moved the value for `DEFAULT_CONFIG_JSON` to a separate file called `default.json`.
