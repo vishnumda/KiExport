@@ -8,7 +8,7 @@ KiExport generates the manufacturing files based on the options available in the
 The [**Mitayi Pico RP2040**](https://github.com/CIRCUITSTATE/Mitayi-Pico-RP2040) project is added as a sample project to test the script. If you are on Windows, you can run the `EXPORT-ALL.bat` batch script to automatically generate the manufacturing files with a double-click.
 
 - **Author:** [Vishnu Mohanan](https://github.com/vishnumaiea)
-- **Version:** `0.2.18`
+- **Version:** `0.2.19`
 - **Contributors:** Dominic Le Blanc ([@domleblanc94](https://github.com/domleblanc94))
 
 This tool was created with the help of [**ChatGPT**](https://chat.openai.com/chat). Thanks to humanity!
@@ -32,7 +32,7 @@ This tool was created with the help of [**ChatGPT**](https://chat.openai.com/cha
     - [`pcb_render`](#pcb_render)
     - [`sch_pdf`](#sch_pdf)
     - [`ddd`](#ddd)
-    - [`svg`](#svg)
+    - [`pcb_svg`](#pcb_svg)
     - [`bom`](#bom)
     - [`run`](#run)
   - [Configuration File](#configuration-file)
@@ -79,7 +79,7 @@ git clone https://github.com/vishnumaiea/KiExport.git
 
 Additionally, you can download the project as a ZIP file from the main page or the [Releases](/releases) page and extract it in your system. After getting the files, you can add the project folder to the system `Path` variable. If your system opens Python script files with the Python interpreter by default, you can run any python script directly from the terminal even without using the `.py` extension as shown in the image below.
 
-![Windows Terminal](/resources/2024-10-12_10-05-04-PM-.png)
+![Windows Terminal](/resources/2026-03-06%2015_27_48-PowerShell.png)
 
 If it still says "kiexport" is not a valid command, add the `.PY` extension to the `PATHEXT` system environment variable in Windows as shown below.
 
@@ -382,12 +382,12 @@ Example:
 kiexport ddd -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb" -od "Mitayi-Pico-D1/Export" -t STEP
 ```
 
-### `svg`
+### `pcb_svg`
 
 Export the PCB as SVG files. The list of layers can be specified in the config file. You can also define common layers to be used when generating each layer. A ZIP file is created at the end while keeping the original files intact. Each run of the command will overwrite the standalone files but will create a new ZIP file with a new sequence number.
 
 ```bash
-kiexport svg -if <input_file> -od <output_dir>
+kiexport pcb_svg -if <input_file> -od <output_dir>
 ```
 
 - `-if`: Path to the input `.kicad_pcb` file. Required.
@@ -396,7 +396,7 @@ kiexport svg -if <input_file> -od <output_dir>
 Example:
 
 ```bash
-kiexport svg -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb" -od "Mitayi-Pico-D1/Export"
+kiexport pcb_svg -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb" -od "Mitayi-Pico-D1/Export"
 ```
 
 ### `bom`

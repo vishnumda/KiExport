@@ -4,8 +4,8 @@
 # KiExport
 # Tool to export manufacturing files from KiCad PCB projects.
 # Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
-# Version: 0.2.18
-# Last Modified: +05:30 12:33:46 PM 06-03-2026, Friday
+# Version: 0.2.19
+# Last Modified: +05:30 03:25:06 PM 06-03-2026, Friday
 # GitHub: https://github.com/vishnumaiea/KiExport
 # License: MIT
 
@@ -26,7 +26,7 @@ import csv
 #=============================================================================================#
 
 APP_NAME = "KiExport"
-APP_VERSION = "0.2.18"
+APP_VERSION = "0.2.19"
 APP_DESCRIPTION = "Tool to export manufacturing files from KiCad PCB projects."
 APP_AUTHOR = "Vishnu Mohanan (@vishnumaiea)"
 
@@ -1834,7 +1834,7 @@ def generateBomXls (output_dir, csv_file, sch_filename, to_overwrite = True):
 
 #=============================================================================================#
 
-def generateSvg (output_dir, pcb_filename, to_overwrite = True):
+def generatePcbSvg (output_dir, pcb_filename, to_overwrite = True):
   # Get the KiCad CLI path.
   kicad_cli_path = f'{current_config.get ("kicad_cli_path", lambda: default_config ["kicad_cli_path"])}'
 
@@ -1843,8 +1843,8 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
 
   # Check if the input file exists
   if not check_file_exists (pcb_filename):
-    print (color.red (f"generateSvg [ERROR]: '{pcb_filename}' does not exist."))
-    command_exec_status ["svg"] = False
+    print (color.red (f"generatePcbSvg [ERROR]: '{pcb_filename}' does not exist."))
+    command_exec_status ["pcb_svg"] = False
     return
 
   #---------------------------------------------------------------------------------------------#
@@ -1855,7 +1855,7 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
   project_name = extract_project_name (file_name)
   info = extract_info_from_pcb (pcb_filename) # Extract basic information from the input file
 
-  print (f"generateSvg [INFO]: Project name is '{color.magenta (project_name)}' and revision is {color.magenta ('R')}{color.magenta (info ['rev'])}.")
+  print (f"generatePcbSvg [INFO]: Project name is '{color.magenta (project_name)}' and revision is {color.magenta ('R')}{color.magenta (info ['rev'])}.")
 
   #---------------------------------------------------------------------------------------------#
 
@@ -1866,11 +1866,11 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
   project_dir = os.path.dirname (file_path)
   
   # Read the output directory name from the config file.
-  od_from_config = project_dir + "/" + current_config.get ("data", {}).get ("svg", {}).get ("--output_dir", lambda: default_config ["data"]["svg"]["--output_dir"])
+  od_from_config = project_dir + "/" + current_config.get ("data", {}).get ("pcb_svg", {}).get ("--output_dir", lambda: default_config ["data"]["pcb_svg"]["--output_dir"])
   od_from_cli = output_dir  # The output directory specified by the command line argument
 
   # Get the final directory path.
-  final_directory, filename_date = create_final_directory (od_from_config, od_from_cli, "SVG", info ["rev"], "generateSvg")
+  final_directory, filename_date = create_final_directory (od_from_config, od_from_cli, "SVG", info ["rev"], "generatePcbSvg")
   
   #---------------------------------------------------------------------------------------------#
 
@@ -1880,14 +1880,14 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
   #---------------------------------------------------------------------------------------------#
   
   # Get the argument list from the config file.
-  arg_list = current_config.get ("data", {}).get ("svg", {})
+  arg_list = current_config.get ("data", {}).get ("pcb_svg", {})
 
   # Check the number of technical layers to export. This is not the number of copper layers.
   layer_count = len (arg_list.get ("--layers", []))
 
   if layer_count <= 0:
-    print (color.red (f"generateSvg [ERROR]: No layers specified for export."))
-    command_exec_status ["svg"] = False
+    print (color.red (f"generatePcbSvg [ERROR]: No layers specified for export."))
+    command_exec_status ["pcb_svg"] = False
     return
 
   # Get the number of common layers to include in each of the PDF.
@@ -1924,15 +1924,15 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
             common_layer_list = [""] # Create a list with an empty string as the only item
             layers_csv = ",".join (common_layer_list) # Convert the list to a comma-separated string (which will just be an empty string)
             full_command.append (f'"{layers_csv}"') # Add an empty string as the value to suppress warnings
-            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' is not supported due to the inability to rename files. Please use the 'kie_common_layers' argument instead."))
+            print (color.yellow (f"generatePcbSvg [WARNING]: The argument '{key}' is not supported due to the inability to rename files. Please use the 'kie_common_layers' argument instead."))
             # continue
           elif key == "--mode-single":
-            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' has no effect, because the behavior is already supported by KiExport in a better way."))
-            # print (color.yellow (f"generateSvg [WARNING]: '{key}' will be set as `true` always for forward compatibility."))
+            print (color.yellow (f"generatePcbSvg [WARNING]: The argument '{key}' has no effect, because the behavior is already supported by KiExport in a better way."))
+            # print (color.yellow (f"generatePcbSvg [WARNING]: '{key}' will be set as `true` always for forward compatibility."))
             full_command.append (key) # This will suppress the warnings
             continue
           elif key == "--mode-multi": # Skip the mode command
-            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' is not supported, because the behavior is already supported by KiExport in a better way."))
+            print (color.yellow (f"generatePcbSvg [WARNING]: The argument '{key}' is not supported, because the behavior is already supported by KiExport in a better way."))
             continue
           else:
             # Check if the value is empty
@@ -1953,23 +1953,23 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
                     full_command.append (str (value))  # Append the numeric value as string
 
     full_command.append (f'"{pcb_filename}"')
-    print ("generateSvg [INFO]: Running command: ", color.blue (' '.join (full_command)))
+    print ("generatePcbSvg [INFO]: Running command: ", color.blue (' '.join (full_command)))
 
       # Run the command
     try:
       full_command = ' '.join (full_command) # Convert the list to a string
       subprocess.run (full_command, check = True)
-      # print (color.green ("generateSvg [OK]: PCB PDF files exported successfully."))
+      # print (color.green ("generatePcbSvg [OK]: PCB PDF files exported successfully."))
     
     except subprocess.CalledProcessError as e:
-      print (color.red (f"generateSvg [ERROR]: Error occurred: {e}"))
-      command_exec_status ["svg"] = False
+      print (color.red (f"generatePcbSvg [ERROR]: Error occurred: {e}"))
+      command_exec_status ["pcb_svg"] = False
       continue
 
   #---------------------------------------------------------------------------------------------#
 
-  print (color.green ("generateSvg [OK]: SVG files exported successfully."))
-  command_exec_status ["svg"] = True
+  print (color.green ("generatePcbSvg [OK]: SVG files exported successfully."))
+  command_exec_status ["pcb_svg"] = True
 
   #---------------------------------------------------------------------------------------------#
   
@@ -1987,7 +1987,7 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
     else:
       # zip_all_files (final_directory, f"{final_directory}/{zip_file_name}")
       zip_all_files_2 (final_directory, files_to_include, zip_file_name)
-      print (f"generateSvg [OK]: ZIP file '{color.magenta (zip_file_name)}' created successfully.")
+      print (f"generatePcbSvg [OK]: ZIP file '{color.magenta (zip_file_name)}' created successfully.")
       print()
       not_completed = False
 
@@ -2321,7 +2321,7 @@ def validate_command_list (cli_string):
     "bom": ["CSV", "XLS", "HTML"],
     "pcb_pdf": [],
     "positions": [],
-    "svg": [],
+    "pcb_svg": [],
     "ddd": ["STEP", "VRML", "3DPDF"],
     "pcb_render": []
   })
@@ -2471,7 +2471,7 @@ def run (config_file, command_list = None):
   #---------------------------------------------------------------------------------------------#
 
   # List of top-level commands.
-  valid_commands = ["gerbers", "drills", "sch_pdf", "bom", "pcb_pdf", "positions", "ddd", "svg", "pcb_render"]
+  valid_commands = ["gerbers", "drills", "sch_pdf", "bom", "pcb_pdf", "positions", "ddd", "pcb_svg", "pcb_render"]
 
   #---------------------------------------------------------------------------------------------#
 
@@ -2625,10 +2625,10 @@ def run (config_file, command_list = None):
       output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
       generate3D (output_dir = output_dir, pcb_filename = pcb_file_path, type = "STEP")
     
-    elif cmd == "svg":
-      output_dir = current_config.get ("data", {}).get ("svg", {}).get ("--output_dir", lambda: default_config ["data"]["svg"]["--output_dir"])
+    elif cmd == "pcb_svg":
+      output_dir = current_config.get ("data", {}).get ("pcb_svg", {}).get ("--output_dir", lambda: default_config ["data"]["pcb_svg"]["--output_dir"])
       output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
-      generateSvg (output_dir = output_dir, pcb_filename = pcb_file_path)
+      generatePcbSvg (output_dir = output_dir, pcb_filename = pcb_file_path)
 
     elif cmd == "pcb_render":
       output_dir = current_config.get ("data", {}).get ("pcb_render", {}).get ("--output_dir", lambda: default_config ["data"]["pcb_render"]["--output_dir"])
@@ -2696,10 +2696,10 @@ def run (config_file, command_list = None):
         output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
         generate3D (output_dir = output_dir, pcb_filename = pcb_file_path, type = "STEP")
     
-    elif cmd [0] == "svg":
-      output_dir = current_config.get ("data", {}).get ("svg", {}).get ("--output_dir", lambda: default_config ["data"]["svg"]["--output_dir"])
+    elif cmd [0] == "pcb_svg":
+      output_dir = current_config.get ("data", {}).get ("pcb_svg", {}).get ("--output_dir", lambda: default_config ["data"]["pcb_svg"]["--output_dir"])
       output_dir = project_dir + "\\" + output_dir  # Output directory is relative to the project directory
-      generateSvg (output_dir = output_dir, pcb_filename = pcb_file_path)
+      generatePcbSvg (output_dir = output_dir, pcb_filename = pcb_file_path)
     
     elif cmd [0] == "pcb_render":
       output_dir = current_config.get ("data", {}).get ("pcb_render", {}).get ("--output_dir", lambda: default_config ["data"]["pcb_render"]["--output_dir"])
@@ -2774,7 +2774,7 @@ def parseArguments():
 
   # Subparser for the 3D file export command.
   # Example: python .\kiexport.py ddd -t "VRML" -od "Mitayi-Pico-D1/Export" -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb"
-  ddd_parser = subparsers.add_parser ("ddd", help = "Export 3D files.")
+  ddd_parser = subparsers.add_parser ("ddd", help = "Export PCB 3D files.")
   ddd_parser.add_argument ("-if", "--input_filename", required = True, help = "Path to the .kicad_pcb file.")
   ddd_parser.add_argument ("-od", "--output_dir", required = True, help = "Directory to save the 3D files to.")
   ddd_parser.add_argument ("-t", "--type", required = True, help = "The type of file to generate. Can be STEP/VRML/3DPDF.")
@@ -2794,7 +2794,7 @@ def parseArguments():
 
   # Subparser for the SVG export command.
   # Example: python .\kiexport.py svg -od "Mitayi-Pico-D1/Export" -if "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb"
-  svg_parser = subparsers.add_parser ("svg", help = "Export SVG files.")
+  svg_parser = subparsers.add_parser ("pcb_svg", help = "Export PCB SVG files.")
   svg_parser.add_argument ("-if", "--input_filename", required = True, help = "Path to the .kicad_pcb file.")
   svg_parser.add_argument ("-od", "--output_dir", required = True, help = "Directory to save the SVG files to.")
 
@@ -2926,8 +2926,8 @@ def parseArguments():
   elif args.command == "ddd":
     generate3D (output_dir = args.output_dir, pcb_filename = args.input_filename, type = args.type)
 
-  elif args.command == "svg":
-    generateSvg (output_dir = args.output_dir, pcb_filename = args.input_filename)
+  elif args.command == "pcb_svg":
+    generatePcbSvg (output_dir = args.output_dir, pcb_filename = args.input_filename)
 
   elif args.command == "pcb_render":
     generatePcbRenders (output_dir = args.output_dir, pcb_filename = args.input_filename, preset = args.preset)

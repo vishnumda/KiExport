@@ -2,7 +2,7 @@
   "name": "KiExport.JSON",
   "description": "Configuration file for KiExport",
   "filetype": "json",
-  "version": "1.10",
+  "version": "2.11",
   "project_name": "Mitayi-Pico-D1",
   "commands": [
     "pcb_drc",
@@ -13,7 +13,7 @@
     ["bom", "HTML"],
     "pcb_pdf",
     "positions",
-    "svg",
+    "pcb_svg",
     ["pcb_render", "PCB-Front"],
     ["pcb_render", "PCB-Back"],
     ["pcb_render", "PCB-Left"],
@@ -225,7 +225,7 @@
       "--exclude-dnp": false,
       "--gerber-board-edge": false
     },
-    "svg": {
+    "pcb_svg": {
       "--output_dir": "Export",
       "--layers": [
         "F.Cu",

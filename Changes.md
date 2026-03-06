@@ -2,6 +2,15 @@
 # Changes
 
 #
+### **+05:30 03:23:41 PM 06-03-2026, Friday**
+
+  - Renamed the `svg` command to `pcb_svg`.
+    - This is to avoid confusion with other SVG exports, for example schematic SVG export.
+  - Bumped up the configuration JSON version to `2.11` since this is a breaking change.
+  - Updated Readme.
+  - New Version 🆕 `0.2.19`.
+
+#
 ### **+05:30 03:05:17 PM 06-03-2026, Friday**
 
   - Updated Readme.
