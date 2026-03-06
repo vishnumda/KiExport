@@ -2,7 +2,7 @@
   "name": "KiExport.JSON",
   "description": "Configuration file for KiExport",
   "filetype": "json",
-  "version": "1.8",
+  "version": "1.9",
   "project_name": "Mitayi-Pico-D1",
   "commands": [
     "pcb_drc",
@@ -247,8 +247,14 @@
         "F.Fab",
         "B.Fab"
       ],
-      "kie_common_layers": [""],
+      "--common-layers": [
+        "Edge.Cuts"
+      ],
+      "kie_common_layers": [
+        "Edge.Cuts"
+      ],
       "--drawing-sheet": false,
+      "--subtract-soldermask": false,
       "--mirror": false,
       "--theme": "User",
       "--negative": false,
@@ -261,7 +267,11 @@
       "--fit-page-to-board": false,
       "--exclude-drawing-sheet": false,
       "--drill-shape-opt": 1,
-      "--plot-invisible-text": false
+      "--mode-single": true,
+      "--mode-multi": false,
+      "--scale": false,
+      "--check-zones": false,
+      "--variant": false
     },
     "ddd": {
       "STEP": {

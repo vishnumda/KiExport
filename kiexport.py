@@ -4,8 +4,8 @@
 # KiExport
 # Tool to export manufacturing files from KiCad PCB projects.
 # Author: Vishnu Mohanan (@vishnumaiea, @vizmohanan)
-# Version: 0.1.15
-# Last Modified: +05:30 00:11:18 AM 25-10-2025, Saturday
+# Version: 0.2.16
+# Last Modified: +05:30 10:53:49 AM 06-03-2026, Friday
 # GitHub: https://github.com/vishnumaiea/KiExport
 # License: MIT
 
@@ -26,9 +26,9 @@ import csv
 #=============================================================================================#
 
 APP_NAME = "KiExport"
-APP_VERSION = "0.1.15"
+APP_VERSION = "0.1.16"
 APP_DESCRIPTION = "Tool to export manufacturing files from KiCad PCB projects."
-APP_AUTHOR = "Vishnu Mohanan (@vishnumaiea, @vizmohanan)"
+APP_AUTHOR = "Vishnu Mohanan (@vishnumaiea)"
 
 SAMPLE_PCB_FILE = "Mitayi-Pico-D1/Mitayi-Pico-RP2040.kicad_pcb"
 MIN_CONFIG_JSON_VERSION = "1.7"  # Minimum required version of the config JSON file
@@ -2361,6 +2361,21 @@ def generateSvg (output_dir, pcb_filename, to_overwrite = True):
             layers_csv = ",".join (layer_list) # Convert the list to a comma-separated string
             full_command.append (key)
             full_command.append (f'"{layers_csv}"')
+          elif key == "--common-layers":
+            full_command.append (key) # Add the command, but with an empty list to suppress warnings
+            common_layer_list = [""] # Create a list with an empty string as the only item
+            layers_csv = ",".join (common_layer_list) # Convert the list to a comma-separated string (which will just be an empty string)
+            full_command.append (f'"{layers_csv}"') # Add an empty string as the value to suppress warnings
+            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' is not supported due to the inability to rename files. Please use the 'kie_common_layers' argument instead."))
+            # continue
+          elif key == "--mode-single":
+            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' has no effect, because the behavior is already supported by KiExport in a better way."))
+            # print (color.yellow (f"generateSvg [WARNING]: '{key}' will be set as `true` always for forward compatibility."))
+            full_command.append (key) # This will suppress the warnings
+            continue
+          elif key == "--mode-multi": # Skip the mode command
+            print (color.yellow (f"generateSvg [WARNING]: The argument '{key}' is not supported, because the behavior is already supported by KiExport in a better way."))
+            continue
           else:
             # Check if the value is empty
             if value == "": # Skip if the value is empty

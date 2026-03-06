@@ -11557,7 +11557,7 @@
 			(uuid "426f6125-c086-49f0-a63c-44994ba2a885")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR08")
 					(unit 1)
@@ -11634,7 +11634,7 @@
 			(uuid "fea17b91-2e66-4283-93dd-836e0a337e7a")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR024")
 					(unit 1)
@@ -11802,7 +11802,7 @@
 			(uuid "a2df728c-a7b2-41d7-891c-a0cd0af86125")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J2")
 					(unit 1)
@@ -11927,7 +11927,7 @@
 			(uuid "986723ed-f43d-4b97-b063-e6961e5b5221")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C17")
 					(unit 1)
@@ -12052,7 +12052,7 @@
 			(uuid "84c921fa-7b55-43b2-a1bf-e599800a07ad")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C4")
 					(unit 1)
@@ -12129,7 +12129,7 @@
 			(uuid "5acfdb55-c811-457e-a894-45444db46e36")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR014")
 					(unit 1)
@@ -12206,7 +12206,7 @@
 			(uuid "e9574064-94bc-447c-b5d6-829673d740ac")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR010")
 					(unit 1)
@@ -12384,7 +12384,7 @@
 			(uuid "b1a4fa45-2339-43c3-ab16-c0705c625752")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J4")
 					(unit 1)
@@ -12507,7 +12507,7 @@
 			(uuid "c3cd7111-574d-47a0-8f47-f5ff186a85c7")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "D1")
 					(unit 1)
@@ -12584,7 +12584,7 @@
 			(uuid "55f0da95-d5b4-46ee-8bf0-aa1bf2fb508b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR020")
 					(unit 1)
@@ -12709,7 +12709,7 @@
 			(uuid "2946a11b-3732-469a-ba5b-e42aa173fdaf")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C19")
 					(unit 1)
@@ -12850,7 +12850,7 @@
 			(uuid "f5973516-5883-4f3f-a22e-61c91258ffcb")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "U1")
 					(unit 1)
@@ -12975,7 +12975,7 @@
 			(uuid "1b9aec5d-98e7-4844-b3b8-7fd134dab38d")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R1")
 					(unit 1)
@@ -13052,7 +13052,7 @@
 			(uuid "3d4b2860-9621-44a0-9a18-c72543d06aa0")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR06")
 					(unit 1)
@@ -13177,7 +13177,7 @@
 			(uuid "b3b1aee5-f4de-4566-9670-010dd4befbcb")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C7")
 					(unit 1)
@@ -13254,7 +13254,7 @@
 			(uuid "0a3daf66-328c-4364-8abf-2f5bef2ee1b9")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR034")
 					(unit 1)
@@ -13542,7 +13542,7 @@
 			(uuid "5ba2a34b-6799-45c5-bacd-faff2dd2dd97")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "U3")
 					(unit 1)
@@ -13619,7 +13619,7 @@
 			(uuid "ecf2a4bc-6ba5-4cf9-baba-f45860520d24")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR037")
 					(unit 1)
@@ -13696,7 +13696,7 @@
 			(uuid "a6080832-ead2-4d74-8755-24302dc7e583")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR013")
 					(unit 1)
@@ -13837,7 +13837,7 @@
 			(uuid "326cd8f1-393a-4a99-879a-d7942efb301b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J1")
 					(unit 1)
@@ -13914,7 +13914,7 @@
 			(uuid "b1c16fb2-3454-4ae4-b9b3-5de00eb8279e")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR029")
 					(unit 1)
@@ -13991,7 +13991,7 @@
 			(uuid "d8723a92-cff9-4623-8f15-f888e245cc6b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR028")
 					(unit 1)
@@ -14114,7 +14114,7 @@
 			(uuid "36b9f725-d09d-46fa-b246-e671fcc22c6e")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R3")
 					(unit 1)
@@ -14239,7 +14239,7 @@
 			(uuid "db706c07-cc73-4453-b781-4ec0ac1de74b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C1")
 					(unit 1)
@@ -14350,7 +14350,7 @@
 			(uuid "fdddaa0a-236d-481c-b9ab-997d08f1d499")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J7")
 					(unit 1)
@@ -14427,7 +14427,7 @@
 			(uuid "e219fce1-9cec-4ae3-9217-32e4504db1dd")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR04")
 					(unit 1)
@@ -14538,7 +14538,7 @@
 			(uuid "adc09d13-44f1-43c3-a44b-6c258084d8f7")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J8")
 					(unit 1)
@@ -14615,7 +14615,7 @@
 			(uuid "ec5d29fc-7c23-469f-a46d-2bda74656fc7")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR039")
 					(unit 1)
@@ -14692,7 +14692,7 @@
 			(uuid "cc8dbbc6-aef0-4136-b73d-40051508f211")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR017")
 					(unit 1)
@@ -14769,7 +14769,7 @@
 			(uuid "fd72d58d-4dd6-47d2-b77d-25a087bb5d5f")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR07")
 					(unit 1)
@@ -14894,7 +14894,7 @@
 			(uuid "ecca9a2d-b2ba-4450-b4ca-00149ed46f76")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C8")
 					(unit 1)
@@ -14971,7 +14971,7 @@
 			(uuid "eafc34c7-71e2-4d34-a193-76459b651490")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR032")
 					(unit 1)
@@ -15048,7 +15048,7 @@
 			(uuid "b3713ac6-52d5-4881-92ff-09d301bb83cc")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR033")
 					(unit 1)
@@ -15171,7 +15171,7 @@
 			(uuid "471c0265-e8be-4260-9578-4caf19049fd1")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R9")
 					(unit 1)
@@ -15296,7 +15296,7 @@
 			(uuid "f770fd5d-000a-4cdd-a444-160af6071114")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C12")
 					(unit 1)
@@ -15373,7 +15373,7 @@
 			(uuid "b9a2d728-a2bb-4f67-be9f-ae5988cc9afc")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR022")
 					(unit 1)
@@ -15496,7 +15496,7 @@
 			(uuid "82965c2b-e731-43a3-b8d9-1986fccf0663")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R4")
 					(unit 1)
@@ -15607,7 +15607,7 @@
 			(uuid "dc1c9e1a-59b8-42d0-b063-1ef2960aeb5d")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J9")
 					(unit 1)
@@ -15684,7 +15684,7 @@
 			(uuid "b35537a3-7835-40d9-8927-81da76823695")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR015")
 					(unit 1)
@@ -15806,7 +15806,7 @@
 			(uuid "46fbcea3-e475-4171-b5b9-cd7c9da0cf03")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "JP5")
 					(unit 1)
@@ -15931,7 +15931,7 @@
 			(uuid "9d26aa1e-0508-4072-9dc4-9fb2913a382e")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C10")
 					(unit 1)
@@ -16056,7 +16056,7 @@
 			(uuid "845d2269-5172-4504-82cc-5afae9d702da")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C6")
 					(unit 1)
@@ -16133,7 +16133,7 @@
 			(uuid "e6dad7ad-0b72-4054-9a3a-c4b4cca40b86")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR027")
 					(unit 1)
@@ -16256,7 +16256,7 @@
 			(uuid "e4c08428-4221-429b-9295-25945ce7dd7c")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R10")
 					(unit 1)
@@ -16375,7 +16375,7 @@
 			)
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "H3")
 					(unit 1)
@@ -16452,7 +16452,7 @@
 			(uuid "b1bd88aa-74ba-43f2-83aa-9b52e0201332")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR021")
 					(unit 1)
@@ -16571,7 +16571,7 @@
 			)
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "H1")
 					(unit 1)
@@ -16696,7 +16696,7 @@
 			(uuid "c5a218ae-afbe-43c5-b9d0-0d3517666481")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C2")
 					(unit 1)
@@ -16819,7 +16819,7 @@
 			(uuid "8ac6ac32-8f59-4349-8c33-2c8766370970")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "JP1")
 					(unit 1)
@@ -16896,7 +16896,7 @@
 			(uuid "bf934d2e-2ae2-4270-9ca6-c97606c44b68")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR026")
 					(unit 1)
@@ -16973,7 +16973,7 @@
 			(uuid "a61bd3f0-cf0e-4c51-93a0-94b63c385fde")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR011")
 					(unit 1)
@@ -17151,7 +17151,7 @@
 			(uuid "c4238b0f-ec2e-412d-8566-7d54155a0ecc")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J3")
 					(unit 1)
@@ -17228,7 +17228,7 @@
 			(uuid "9cae4a41-f036-4645-a818-5f3086e0a311")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR038")
 					(unit 1)
@@ -17351,7 +17351,7 @@
 			(uuid "f7a53674-c7c4-4608-ac66-33a40b1cedb8")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R8")
 					(unit 1)
@@ -17476,7 +17476,7 @@
 			(uuid "0d503266-5666-4c65-90e3-c91fc12f944e")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C3")
 					(unit 1)
@@ -17598,7 +17598,7 @@
 			(uuid "dacdf450-613a-4d61-8786-dd716b03f9f2")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "JP4")
 					(unit 1)
@@ -17675,7 +17675,7 @@
 			(uuid "e083b1e1-ecb1-4b34-a6f3-e389bebbf1b3")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR035")
 					(unit 1)
@@ -17752,7 +17752,7 @@
 			(uuid "e02982c0-1b59-4328-8970-c52ad35663a1")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR01")
 					(unit 1)
@@ -17877,7 +17877,7 @@
 			(uuid "342e975e-aee0-4285-9cc3-9e1e9171d016")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C14")
 					(unit 1)
@@ -18002,7 +18002,7 @@
 			(uuid "f42049e0-929b-4a22-b946-52f30ff627c9")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C5")
 					(unit 1)
@@ -18127,7 +18127,7 @@
 			(uuid "87e6df8f-5ee7-45a9-bf43-47b8bf8b6605")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C11")
 					(unit 1)
@@ -18204,7 +18204,7 @@
 			(uuid "f0de02ee-b0ff-4cb1-b980-09f176b05242")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR05")
 					(unit 1)
@@ -18327,7 +18327,7 @@
 			(uuid "4391ef50-9a88-4533-a3b9-664d773aac60")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "D3")
 					(unit 1)
@@ -18452,7 +18452,7 @@
 			(uuid "59da4248-e95b-4dbf-87bf-3c638151ba99")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C13")
 					(unit 1)
@@ -18563,7 +18563,7 @@
 			(uuid "6b7a1b36-1c0b-43f4-863a-d190684f9acc")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J10")
 					(unit 1)
@@ -18640,7 +18640,7 @@
 			(uuid "5f844569-24d8-4b52-8730-8c4301a28b0e")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR036")
 					(unit 1)
@@ -18765,7 +18765,7 @@
 			(uuid "6c6dc763-9e41-4355-ac6f-ce65a9926ef0")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C9")
 					(unit 1)
@@ -18884,7 +18884,7 @@
 			)
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "H4")
 					(unit 1)
@@ -19007,7 +19007,7 @@
 			(uuid "a312a6ec-7b57-4d5c-8e07-bfe73896b017")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "D2")
 					(unit 1)
@@ -19130,7 +19130,7 @@
 			(uuid "aa9b031f-8677-4d5e-8631-4ae435b71452")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R11")
 					(unit 1)
@@ -19207,7 +19207,7 @@
 			(uuid "17fb4df9-d382-49e7-8e94-870b5c5c5794")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR025")
 					(unit 1)
@@ -19284,7 +19284,7 @@
 			(uuid "40ee1992-6756-4606-94f5-d6988eb890bf")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR023")
 					(unit 1)
@@ -19407,7 +19407,7 @@
 			(uuid "21945837-e290-4eb2-9100-743684f16fc0")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R5")
 					(unit 1)
@@ -19484,7 +19484,7 @@
 			(uuid "9fd11c50-a1a4-48c3-b9e4-4b1e82bdb412")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR031")
 					(unit 1)
@@ -19612,7 +19612,7 @@
 			(uuid "f4c74d59-e547-4ca3-9a84-11c313ec913b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J5")
 					(unit 1)
@@ -19737,7 +19737,7 @@
 			(uuid "d47a2ae4-af1d-410d-a779-050cc2ffe925")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C16")
 					(unit 1)
@@ -19859,7 +19859,7 @@
 			(uuid "faed446d-1a7a-4761-a74f-1b7fa3b127bf")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "SW2")
 					(unit 1)
@@ -19982,7 +19982,7 @@
 			(uuid "3edcf028-06d5-43e9-b6c3-5c0bce87b642")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R6")
 					(unit 1)
@@ -20105,7 +20105,7 @@
 			(uuid "a997de85-eafe-43e6-a1de-91b6debf96e7")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R7")
 					(unit 1)
@@ -20224,7 +20224,7 @@
 			)
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "H2")
 					(unit 1)
@@ -20346,7 +20346,7 @@
 			(uuid "4c1c952e-3db6-48b7-9ad8-becfc7ae0e10")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "SW1")
 					(unit 1)
@@ -20423,7 +20423,7 @@
 			(uuid "acf68109-688c-4028-9a31-3341ba873a4a")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR09")
 					(unit 1)
@@ -20551,7 +20551,7 @@
 			(uuid "2cf5c279-04aa-41d2-929c-f59260cc2dc3")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "JP6")
 					(unit 1)
@@ -20683,7 +20683,7 @@
 			(uuid "65b5576b-cdc2-474f-9c4c-ea37a503ecc6")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "U2")
 					(unit 1)
@@ -20806,7 +20806,7 @@
 			(uuid "ae627b9b-164d-4e29-bd2a-12a54db688e7")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "R2")
 					(unit 1)
@@ -20883,7 +20883,7 @@
 			(uuid "9cf2485f-2726-4ceb-80e0-16a67d51ecc3")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR030")
 					(unit 1)
@@ -21008,7 +21008,7 @@
 			(uuid "1bbd7501-55da-457b-a1b7-f47562a9c1ac")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C15")
 					(unit 1)
@@ -21137,7 +21137,7 @@
 			(uuid "d89b22c1-12a0-46c2-bcc5-c641773e2216")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "Y1")
 					(unit 1)
@@ -21214,7 +21214,7 @@
 			(uuid "2473f99d-7b39-43ef-85da-ab2ff7b333bc")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR02")
 					(unit 1)
@@ -21291,7 +21291,7 @@
 			(uuid "4d1deaba-00f4-4300-b459-8d616329a37b")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR016")
 					(unit 1)
@@ -21368,7 +21368,7 @@
 			(uuid "a9ac8d9f-10b0-47f8-b388-456401c60f94")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR03")
 					(unit 1)
@@ -21493,7 +21493,7 @@
 			(uuid "291e80e4-8fce-459a-a945-a7ee81bea320")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "C18")
 					(unit 1)
@@ -21570,7 +21570,7 @@
 			(uuid "79723bb8-7295-4d7f-9333-9940e57b2812")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "#PWR012")
 					(unit 1)
@@ -21705,7 +21705,7 @@
 			(uuid "552674d8-727a-4f12-93d2-2237c70c2ba0")
 		)
 		(instances
-			(project "Mitayi-Pico-RP2040"
+			(project "Mitayi-Pico-D1"
 				(path "/35c47459-45a7-4753-acae-c8b47e7575e1"
 					(reference "J6")
 					(unit 1)
